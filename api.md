@@ -115,6 +115,41 @@ mutation UpdateIssue($id: String!, $input: IssueUpdateInput!) {
 }
 ```
 
+**Set issue reminder:**
+
+Creates a reminder notification for an issue at a specified time. The reminder will appear in the user's Linear Inbox when the time is reached.
+
+```graphql
+mutation SetReminder($id: String!, $reminderAt: DateTime!) {
+  issueReminder(id: $id, reminderAt: $reminderAt) {
+    success
+  }
+}
+```
+
+With variables:
+```json
+{
+  "id": "issue-uuid-here",
+  "reminderAt": "2026-02-03T11:00:00.000Z"
+}
+```
+
+**Example with curl:**
+```bash
+curl -s -X POST https://api.linear.app/graphql \
+  -H "Content-Type: application/json" \
+  -H "Authorization: $LINEAR_API_KEY" \
+  -d '{
+    "query": "mutation { issueReminder(id: \"ISSUE_UUID\", reminderAt: \"2026-02-03T11:00:00.000Z\") { success } }"
+  }'
+```
+
+**Notes:**
+- `reminderAt` must be in the future (ISO 8601 format with timezone)
+- The reminder creates a notification in the user's Inbox at the specified time
+- Use issue UUID, not identifier (e.g., use the `id` field, not `MICRA-123`)
+
 **Look up project by name:**
 ```graphql
 query ProjectByName($filter: ProjectFilter!) {
