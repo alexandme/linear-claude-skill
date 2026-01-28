@@ -112,12 +112,12 @@ Implementation complete. All tests passing."
 
 ### "MCP tools not available"
 
-This is NOT a blocker. Use the Linear CLI via Bash:
+This is NOT a blocker. Use the linearis CLI via Bash:
 
 ```bash
-linear issues view ENG-123
-linear issues create --title "Issue title"
-linear issues update ENG-123 -s "STATE_ID"
+linearis issues read ENG-123
+linearis issues create "Issue title" --team ENG
+linearis issues update ENG-123 --state Done
 ```
 
 ### Status Update Fails with Schema Error

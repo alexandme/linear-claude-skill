@@ -96,10 +96,10 @@ mutation {
 
 ```bash
 # Check for existing projects
-linear projects list | grep -i "phase\|<feature-name>"
+linearis projects list
 
 # Check for existing issues (MCP may timeout - use CLI as fallback)
-linear issues list --filter "title:Phase N"
+linearis issues search "Phase N"
 # Or: mcp__linear__linear_search_issues with query="Phase N feature"
 ```
 
@@ -107,8 +107,8 @@ linear issues list --filter "title:Phase N"
 
 | Check | Command | Action if Found |
 |-------|---------|-----------------|
-| Project exists? | `linear projects list \| grep -i "name"` | Use existing UUID, skip creation |
-| Issues exist? | `linear issues list --filter "title:keyword"` | Review existing, update if needed |
+| Project exists? | `linearis projects list` | Use existing UUID, skip creation |
+| Issues exist? | `linearis issues search "keyword"` | Review existing, update if needed |
 | Initiative linked? | Check project in Linear UI | Skip link-project step |
 
 **NEVER skip discovery. Duplicate projects waste time and create confusion.**

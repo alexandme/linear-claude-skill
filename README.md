@@ -137,10 +137,10 @@ linear-claude-skill/
 
 ```bash
 # Check for existing projects
-linear projects list | grep -i "phase\|feature-name"
+linearis projects list
 
 # Check for existing issues
-linear issues list --filter "title:keyword"
+linearis issues search "keyword"
 ```
 
 See `SKILL.md` → "Discovery Before Creation" for the full checklist.

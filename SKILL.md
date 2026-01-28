@@ -18,26 +18,29 @@ Tools and workflows for managing issues, projects, and teams in Linear.
 **This skill supports multiple tool backends. Use whichever is available:**
 
 1. **MCP Tools (mcp__linear)** - Use if available in your tool set
-2. **Linear CLI (`linear` command)** - Always available via Bash
+2. **linearis CLI (`linearis` command)** - Always available via Bash (JSON output)
 3. **Helper Scripts** - For complex operations
 
-**If MCP tools are NOT available**, use the Linear CLI via Bash:
+**If MCP tools are NOT available**, use the linearis CLI via Bash:
 
 ```bash
 # View an issue
-linear issues view ENG-123
+linearis issues read ENG-123
 
 # Create an issue
-linear issues create --title "Issue title" --description "Description"
+linearis issues create "Issue title" --team ENG --description "Description"
 
-# Update issue status (get state IDs first)
-linear issues update ENG-123 -s "STATE_ID"
+# Update issue status
+linearis issues update ENG-123 --state Done
 
 # Add a comment
-linear issues comment add ENG-123 -m "Comment text"
+linearis comments create ENG-123 --body "Comment text"
 
 # List issues
-linear issues list
+linearis issues list --team ENG
+
+# Show all commands
+linearis usage
 ```
 
 **Do NOT report "MCP tools not available" as a blocker** - use CLI instead.
@@ -65,7 +68,6 @@ cat .env.schema | grep LINEAR
 
 ```bash
 # ❌ NEVER - exposes key to Claude's context
-linear config show
 echo $LINEAR_API_KEY
 printenv | grep LINEAR
 cat .env
